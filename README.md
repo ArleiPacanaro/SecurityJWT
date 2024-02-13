@@ -70,17 +70,17 @@ adicionais ou personalizadas nos tokens JWT, conforme necessário para as
 necessidades específicas da aplicação.
 
 
-2) criamos um 2 classe que vai injetar o Token acima e o banco dados, além de fazer a herança da classe: OncePerRequestFilter
+2) criamos uma 2 classe que vai injetar o Token acima e o banco dados, além de fazer a herança da classe: OncePerRequestFilter
    Que diferente de quando temos a anotação @EnableWebSecurity que já injeta no spring boot o componenete para ver no metodo bean as regras de segurança, ela usa o que fazemos antes com as servlets
    implementa um filtro para capturar todas as requisoções, e neste exeplo validamos apenas se o token esta válido caso venha preechida e com a regra da criptografia ja sabe o a regra do usuário.
 
-que será validado depois na 3 classe abaixo com as regras definidaas mas podemos tbm usar um xml para esta configuração de roles vs endpoints
+que será validado depois na 3 classe abaixo com as regras definidas mas podemos tbm usar um xml para esta configuração de roles vs endpoints
 
-usa a classe: UserDetails,UsernamePasswordAuthenticationToken,SecurityContextHolder
+usamos as ionterfaces e classes do Spring Security: UserDetails,UsernamePasswordAuthenticationToken,SecurityContextHolder
 a nossa classe user tem que implementar a interface UserDetails
 que implementa diversos metodos, sendo um dos principais : getAuthorities para saber o tipo de role.
 
-metodo: doFilterInternal
+metodo que captura a requisação em 1 lugar: doFilterInternal
 classes: HttpServletRequest,HttpServletResponse,FilterChain
 UsernamePasswordAuthenticationToken
 
